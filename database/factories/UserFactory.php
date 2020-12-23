@@ -1,6 +1,9 @@
 <?php
 
 use Faker\Generator as Faker;
+use ForumRealtime\Models\User;
+use ForumRealtime\Models\Thread;
+use ForumRealtime\Models\Reply;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +16,35 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(ForumRealtime\User::class, function (Faker $faker) {
+$factory->define(User::class, function (Faker $faker) {
+    static $password;
+
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+        'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+    ];
+});
+
+$factory->define(Thread::class, function (Faker $faker) {
+    return [
+        'title' => $faker->sentence,
+        'body' => implode(' ', $faker->paragraphs),
+        'user_id' => function () {
+            return factory(User::class)->create()->id;
+        }
+    ];
+});
+
+$factory->define(Reply::class, function (Faker $faker) {
+    return [
+        'body' => $faker->paragraph,
+        'user_id' => function () {
+            return factory(User::class)->create()->id;
+        },
+        'thread_id' => function () {
+            return factory(Thread::class)->create()->id;
+        }
     ];
 });
