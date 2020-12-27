@@ -1,7 +1,12 @@
-@extends('layouts.layout')
-
+@extends('layouts.base')
 @section('content')
     <div id="app">
-        <example-component>Loading...</example-component>
+        <thread>
+            Loading
+        </thread>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/threads.js') }}"></script>
 @endsection
