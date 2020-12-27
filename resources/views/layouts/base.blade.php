@@ -9,11 +9,20 @@
     <title>Forum Realtime</title>
 </head>
 <body>
-    @yield('content')
+    <header>
+        @include('layouts.base.header')
+    </header>
 
-    <script src="{{ asset('js/manifest.js') }}"></script>
-    <script src="{{ asset('js/vendor.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
-    <script src="{{ asset('js/threads.js') }}"></script>
+    <main>
+        <section>
+            @yield('content')
+        </section>
+    </main>
+
+
+    @include('layouts.base.footer')
+    @component('layouts.base.scripts')
+        @yield('scripts')
+    @endcomponent
 </body>
 </html>
