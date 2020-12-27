@@ -1,9 +1,9 @@
 @extends('layouts.base')
 @section('content')
     <div id="app">
-        <example-component>
+        <thread>
             Loading
-        </example-component>
+        </thread>
     </div>
 @endsection
 
