@@ -1,7 +1,13 @@
-<nav>
-    <div class="nav-wrapper">
-        <div class="container">
-            <a href="#" class="brand-logo">{{ __('Meus Herois - Forum') }}</a>
+<div class="parallax-container">
+    <nav>
+        <div class="nav-wrapper">
+            <div class="container">
+                <a href="#" class="brand-logo">{{ __('Meus Herois - Forum') }}</a>
+            </div>
         </div>
+    </nav>
+
+    <div class="parallax">
+        <img src="/img/help.jpg" alt="imagem de ajuda">
     </div>
-</nav>
+</div>

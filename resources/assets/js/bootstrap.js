@@ -11,6 +11,7 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('materialize-css/dist/js/materialize.min');
+    require('./parallax-header.js')
 } catch (e) {}
 
 /**
